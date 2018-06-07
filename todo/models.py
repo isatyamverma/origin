@@ -54,7 +54,9 @@ class Action(ModelBase):
     actor = models.ForeignKey(User)
     action = fields.CharField(max_length=127, choices=action_list)
 
-
+'''
+When User perform 'DONE' action on any task then task status is updated here.
+'''
 @receiver(post_save, sender=Action)
 def create_component_group_link(sender, instance, created, **kwargs):
     if created:
